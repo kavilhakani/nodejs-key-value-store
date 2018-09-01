@@ -1,13 +1,14 @@
 "use strict";
 
 var mysql = require('mysql');
+var config = require('config');
 var pool = mysql.createPool({
-    connectionLimit: process.env.DB_CONNECTION_LIMIT,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_SCHEMA
+    connectionLimit: config.DB_CONNECTION_LIMIT,
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    user: config.DB_USER,
+    password: config.DB_PASSWORD,
+    database: config.DB_SCHEMA
 });
 var debug = require('debug')('key_val_store_api:app:db');
 var error = require('debug')('key_val_store_api:app:db:error');
